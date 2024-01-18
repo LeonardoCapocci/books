@@ -41,10 +41,19 @@ for (let i = 0; i < myLibrary.length; i++) {
 
   // Completion
   const bookCompletion = document.createElement('p');
-  bookCompletion.textContent = myLibrary[i].completion
-  bookContainer.appendChild(bookCompletion)
+  bookCompletion.textContent = myLibrary[i].completion;
+  bookContainer.appendChild(bookCompletion);
 
   // Append bookContainer to bookList div in body
   let bookList = document.querySelector('.book-list');
   bookList.appendChild(bookContainer);
 }
+
+const modal = document.querySelector('.modal');
+const openModal = document.querySelector('.book-btn');
+const closeModal = document.querySelector('.something');
+
+openModal.addEventListener('click', () => {
+  modal.showModal();
+  console.log('great success')
+})

@@ -1,33 +1,89 @@
-* {
-    padding: 0px;
-    margin: 0px;
-}
 
 body {
+    margin: 0px;
+    padding: 0px;
     font-family: sans-serif;
     background-color: rgb(240, 238, 241);
 }
 
 .header {
     background-color: white;
+    padding: 30px 10%;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 4px;;
+}
+
+.book-btn-container {
     text-align: center;
-    padding: 30px;
+    margin: 40px;
+}
+
+.book-btn {
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.book-btn:hover {
+    border-radius: 5px;
+    background-color: rgb(212, 208, 212);
+}
+.modal h3 {
+    margin: 0;
+}
+.modal {
+    width: 300px;
+    background-color: rgb(240, 238, 241);
+    border: none;
+    border-radius: 7px;
+    padding: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+    font-size: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.input {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.checkbox {
+    transform: scale(1.5);
+}
+
+.submit {
+    border: rgb(11, 209, 11);
+    border-radius: 5px;
+    background-color: #2fe635;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.submit:hover {
+    background-color: rgb(7, 159, 7);
 }
 
 .book-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 2rem;
     align-items: center;
     justify-content: center;
+    margin: 30px 10%;
 }
 
 .book-container {
     background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px;;
     text-align: center;
 }
 

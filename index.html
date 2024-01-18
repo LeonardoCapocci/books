@@ -11,6 +11,22 @@
   <div class="header">
     <h1>Library</h1>
   </div>
+  <div class="book-btn-container">
+    <button class="book-btn">+ Add Book</button>
+    <dialog class="modal">
+
+      <form class="form" method="dialog">
+        <h3>Add New Book</h3>
+        <input type="text" class="input" id="title" placeholder="Title" required>
+        <input type="text" class="input" id="author" placeholder="Author" required>
+        <div>
+          <label for="is-read">Have you read it?</label>
+          <input type="checkbox" class='checkbox' id="is-read">
+      </div>
+      <button type="submit" class="submit">Submit</button>
+      </form>
+    </dialog>
+  </div>
   <div class="book-list"></div>
 </body>
 </html>
