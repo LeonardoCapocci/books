@@ -54,19 +54,45 @@ function updateScreen() {
 
   const bookList = document.querySelector('.book-list');
   bookList.appendChild(bookContainer);
+}
 
-  // Change read status
-  bookContainer.addEventListener('click', function() {
+// Change read status
+const bookList = document.querySelector('.book-list');
+bookList.addEventListener('click', function (event) {
+  const clickedElement = event.target;
+  const bookContainer = clickedElement.closest('.book-container');
+
+  if (bookContainer) {
+    const bookRead = bookContainer.querySelector('.book-read');
+
     if (bookContainer.classList.contains('read-book')) {
-      bookContainer.classList.remove('read-book')
-      bookRead.textContent = "Not Read"
+      bookContainer.classList.remove('read-book');
+      bookRead.textContent = "Not Read";
     }
     else {
-      bookContainer.classList.add('read-book')
-      bookRead.textContent = "Read"
+      bookContainer.classList.add('read-book');
+      bookRead.textContent = "Read";
+    }
   }
 })
-}
+
+
+
+
+
+
+// const bookContainer = document.querySelector('.book-container');
+// const bookRead = document.querySelector('.book-read');
+// bookContainer.addEventListener('click', function() {
+//   if (bookContainer.classList.contains('read-book')) {
+//     bookContainer.classList.remove('read-book');
+//     bookRead.textContent = "Not Read";
+//   }
+//   else {
+//     bookContainer.classList.add('read-book');
+//     bookRead.textContent = "Read";
+//   }
+// })
 
 // Modal Settings
 const modal = document.querySelector('.modal');
