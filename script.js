@@ -15,7 +15,10 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
   updateScreen();
 }
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 800, true);
+addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 801, true);
+addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 802, true);
+addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 803, true);
+addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 804, true);
 
 // Update Screen
 function updateScreen() {
@@ -52,6 +55,13 @@ function updateScreen() {
     bookRead.classList.add('read-book');
   }
 
+  // Remove book button
+  const bookRemove = document.createElement('button');
+  bookRemove.className = 'book-remove';
+  bookRemove.textContent = "Remove Book";
+  bookContainer.appendChild(bookRemove);
+
+  // Add book container to booklist
   const bookList = document.querySelector('.book-list');
   bookList.appendChild(bookContainer);
 }
@@ -75,22 +85,15 @@ bookList.addEventListener('click', function (event) {
 })
 
 
-
-
-
-
-// const bookContainer = document.querySelector('.book-container');
-// const bookRead = document.querySelector('.book-read');
-// bookContainer.addEventListener('click', function() {
-//   if (bookContainer.classList.contains('read-book')) {
-//     bookContainer.classList.remove('read-book');
-//     bookRead.textContent = "Not Read";
-//   }
-//   else {
-//     bookContainer.classList.add('read-book');
-//     bookRead.textContent = "Read";
-//   }
-// })
+// Remove book
+bookList.addEventListener('click', function (event) {
+  const clickedElement = event.target;
+  const bookRemove = clickedElement.closest('.book-remove');
+  if (bookRemove) {
+    const bookContainer = bookRemove.closest('.book-container');
+    bookList.removeChild(bookContainer);
+    }
+})
 
 // Modal Settings
 const modal = document.querySelector('.modal');
@@ -108,11 +111,17 @@ closeModal.addEventListener('click', () => {
 
 // Apply form submission to add book to library
 const form = document.querySelector('.form');
-form.addEventListener('submit', () => {
+form.addEventListener('submit', (event) => {
+
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const read = document.getElementById('is-read').checked;
 
   addBookToLibrary(title, author, pages, read);
+
+  document.getElementById('title').value = '';
+  document.getElementById('author').value = '';
+  document.getElementById('pages').value = '';
+  document.getElementById('is-read').checked = false;
 })

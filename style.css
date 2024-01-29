@@ -42,7 +42,15 @@ body {
 }
 
 .close-modal {
-    background-color: red;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: rgb(255, 83, 83);
+}
+
+.close-modal:hover {
+    background-color: rgb(215, 69, 69);
 }
 
 .form {
@@ -66,15 +74,15 @@ body {
 }
 
 .submit {
-    border: rgb(11, 209, 11);
+    border: none;
     border-radius: 5px;
-    background-color: #2fe635;
+    background-color: #4cff4c;
     padding: 10px;
     font-size: 16px;
 }
 
 .submit:hover {
-    background-color: rgb(7, 159, 7);
+    background-color: #3fdb3f;
 }
 
 .book-list {
@@ -92,13 +100,14 @@ body {
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px;;
     text-align: center;
     font-size: 20px;
-    gap: 20px;
-    padding: 20px;
+}
+
+.book-container > * {
+    margin: 20px;
 }
 
 .book-title {
     font-weight: bold;
-    margin: 0px;
 }
 
 .book-author {
@@ -106,18 +115,36 @@ body {
 }
 
 .book-read {
-    background-color: rgb(248, 185, 185);
+    background-color: rgb(255, 83, 83);
     width: 80%;
     font-size: 20px;
     border-radius: 5px;
     padding: 5px;
+    border: none;
+    margin-top: 0px;
+}
+
+.book-read:hover {
+    background-color: rgb(215, 69, 69);
 }
 
 .book-read.read-book {
-    background-color: rgb(184, 237, 184);    
+    background-color: #4cff4c;    
 }
 
-/* Background color for a read book */
-.book-container.read-book {
-    background-color: #2dad13;
-  }
+.book-read.read-book:hover {
+    background-color: #3fdb3f;    
+}
+
+.book-remove {
+    width: 80%;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    margin-top: 0px;
+}
+
+.book-remove:hover {
+    background-color: rgb(195, 194, 194);
+}
