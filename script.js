@@ -13,7 +13,6 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  console.log(myLibrary);
   updateScreen();
 }
 addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 800, true);
@@ -39,21 +38,35 @@ function updateScreen() {
   const bookPages = document.createElement('p');
   bookPages.className = 'book-pages';
   bookPages.textContent = myLibrary[myLibrary.length -1].pages;
-  bookPages.textContent += " pages"
+  bookPages.textContent += " pages";
   bookContainer.appendChild(bookPages);
 
   // Read?
   const bookRead = document.createElement('p');
-  bookRead.className = 'book-read'
-  bookRead.textContent = myLibrary[myLibrary.length -1].read ? "Read" : "Not Read"
-  bookContainer.appendChild(bookRead)
+  bookRead.className = 'book-read';
+  bookRead.textContent = myLibrary[myLibrary.length -1].read ? "Read" : "Not Read";
+  bookContainer.appendChild(bookRead);
 
-  const bookList = document.querySelector('.book-list')
-  bookList.appendChild(bookContainer)
+  // Apply class based on read status
+  if (myLibrary[myLibrary.length - 1].read) {
+    bookContainer.classList.add('read-book');
+  }
+
+  const bookList = document.querySelector('.book-list');
+  bookList.appendChild(bookContainer);
+
+  // Change read status
+  bookContainer.addEventListener('click', function() {
+    if (bookContainer.classList.contains('read-book')) {
+      bookContainer.classList.remove('read-book')
+      bookRead.textContent = "Not Read"
+    }
+    else {
+      bookContainer.classList.add('read-book')
+      bookRead.textContent = "Read"
+  }
+})
 }
-
-// Change read status
-
 
 // Modal Settings
 const modal = document.querySelector('.modal');
@@ -77,5 +90,5 @@ form.addEventListener('submit', () => {
   const pages = document.getElementById('pages').value;
   const read = document.getElementById('is-read').checked;
 
-  addBookToLibrary(title, author, pages, read)
+  addBookToLibrary(title, author, pages, read);
 })
