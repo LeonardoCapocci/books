@@ -91,19 +91,30 @@ body {
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px;;
     text-align: center;
-    background-color: rgb(217, 28, 28);
-}
-
-.book-container p {
-    margin: 10px;
+    font-size: 20px;
+    gap: 20px;
+    padding: 20px;
 }
 
 .book-title {
     font-weight: bold;
+    margin: 0px;
 }
 
 .book-author {
     font-style: italic;
+}
+
+.book-read {
+    background-color: rgb(248, 185, 185);
+    width: 80%;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.book-read.read-book {
+    background-color: rgb(184, 237, 184);    
 }
 
 /* Background color for a read book */

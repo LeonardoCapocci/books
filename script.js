@@ -42,14 +42,14 @@ function updateScreen() {
   bookContainer.appendChild(bookPages);
 
   // Read?
-  const bookRead = document.createElement('p');
+  const bookRead = document.createElement('button');
   bookRead.className = 'book-read';
   bookRead.textContent = myLibrary[myLibrary.length -1].read ? "Read" : "Not Read";
   bookContainer.appendChild(bookRead);
 
   // Apply class based on read status
   if (myLibrary[myLibrary.length - 1].read) {
-    bookContainer.classList.add('read-book');
+    bookRead.classList.add('read-book');
   }
 
   const bookList = document.querySelector('.book-list');
@@ -60,17 +60,15 @@ function updateScreen() {
 const bookList = document.querySelector('.book-list');
 bookList.addEventListener('click', function (event) {
   const clickedElement = event.target;
-  const bookContainer = clickedElement.closest('.book-container');
+  const bookRead = clickedElement.closest('.book-read');
 
-  if (bookContainer) {
-    const bookRead = bookContainer.querySelector('.book-read');
-
-    if (bookContainer.classList.contains('read-book')) {
-      bookContainer.classList.remove('read-book');
+  if (bookRead) {
+    if (bookRead.classList.contains('read-book')) {
+      bookRead.classList.remove('read-book');
       bookRead.textContent = "Not Read";
     }
     else {
-      bookContainer.classList.add('read-book');
+      bookRead.classList.add('read-book');
       bookRead.textContent = "Read";
     }
   }
