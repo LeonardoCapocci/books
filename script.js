@@ -1,72 +1,63 @@
 // Empty Book Library
-Library = [];
-
-// Book Constructor
-class Book {
-  constructor(
-    title = 'Unknown',
-    author = 'Unkown',
-    pages = 0,
-    read = false,
-  ) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
+class Library {
+  constructor() {
+    this.books = []
   }
-}
-
-// Function to add books to the library
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
-  Library.push(newBook);
-  updateScreen();
-}
-
-// Update Screen
-function updateScreen() {
-  const bookContainer = document.createElement('div');
-  bookContainer.className = 'book-container'
-
-  // Title
-  const bookTitle = document.createElement('p');
-  bookTitle.className = 'book-title';
-  bookTitle.textContent = Library[Library.length -1].title;
-  bookContainer.appendChild(bookTitle)
-
-  // Author
-  const bookAuthor = document.createElement('p');
-  bookAuthor.className = 'book-author';
-  bookAuthor.textContent = Library[Library.length -1].author;
-  bookContainer.appendChild(bookAuthor);
-
-  // Pages
-  const bookPages = document.createElement('p');
-  bookPages.className = 'book-pages';
-  bookPages.textContent = Library[Library.length -1].pages;
-  bookPages.textContent += " pages";
-  bookContainer.appendChild(bookPages);
-
-  // Read?
-  const bookRead = document.createElement('button');
-  bookRead.className = 'book-read';
-  bookRead.textContent = Library[Library.length -1].read ? "Read" : "Not Read";
-  bookContainer.appendChild(bookRead);
-
-  // Apply class based on read status
-  if (Library[Library.length - 1].read) {
-    bookRead.classList.add('read-book');
+  // Function to add books to the library
+  addBookToLibrary(title, author, pages, read) {
+    const newBook = new Book(title, author, pages, read);
+    this.books.push(newBook);
+    this.updateScreen();
   }
 
-  // Remove book button
-  const bookRemove = document.createElement('button');
-  bookRemove.className = 'book-remove';
-  bookRemove.textContent = "Remove Book";
-  bookContainer.appendChild(bookRemove);
+  // Update Screen
+  updateScreen() {
+    const bookContainer = document.createElement('div');
+    bookContainer.className = 'book-container'
 
-  // Add book container to booklist
-  const bookList = document.querySelector('.book-list');
-  bookList.appendChild(bookContainer);
+    // To access latest added book
+    const latestBook = this.books[this.books.length - 1];
+
+    // Title
+    const bookTitle = document.createElement('p');
+    bookTitle.className = 'book-title';
+    bookTitle.textContent = latestBook.title;
+    bookContainer.appendChild(bookTitle)
+
+    // Author
+    const bookAuthor = document.createElement('p');
+    bookAuthor.className = 'book-author';
+    bookAuthor.textContent = latestBook.author;
+    bookContainer.appendChild(bookAuthor);
+
+    // Pages
+    const bookPages = document.createElement('p');
+    bookPages.className = 'book-pages';
+    bookPages.textContent = latestBook.pages;
+    bookPages.textContent += " pages";
+    bookContainer.appendChild(bookPages);
+
+    // Read?
+    const bookRead = document.createElement('button');
+    bookRead.className = 'book-read';
+    bookRead.textContent = latestBook.read ? "Read" : "Not Read";
+    bookContainer.appendChild(bookRead);
+
+    // Apply class based on read status
+    if (latestBook.read) {
+      bookRead.classList.add('read-book');
+    }
+
+    // Remove book button
+    const bookRemove = document.createElement('button');
+    bookRemove.className = 'book-remove';
+    bookRemove.textContent = "Remove Book";
+    bookContainer.appendChild(bookRemove);
+
+    // Add book container to booklist
+    const bookList = document.querySelector('.book-list');
+    bookList.appendChild(bookContainer);
+  }
 }
 
 // Change read status
@@ -98,6 +89,23 @@ bookList.addEventListener('click', function (event) {
     }
 })
 
+// Book Constructor
+class Book {
+  constructor(
+    title = 'Unknown',
+    author = 'Unkown',
+    pages = 0,
+    read = false,
+  ) {
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.read = read
+  }
+}
+
+
+
 // Modal Settings
 const modal = document.querySelector('.modal');
 const openModal = document.querySelector('.book-btn');
@@ -121,7 +129,7 @@ form.addEventListener('submit', (event) => {
   const pages = document.getElementById('pages').value;
   const read = document.getElementById('is-read').checked;
 
-  addBookToLibrary(title, author, pages, read);
+  library.addBookToLibrary(title, author, pages, read);
 
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
@@ -129,4 +137,5 @@ form.addEventListener('submit', (event) => {
   document.getElementById('is-read').checked = false;
 })
 
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 662, true);
+library = new Library();
+library.addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 662, true);
