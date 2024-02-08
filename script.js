@@ -1,24 +1,27 @@
 // Empty Book Library
-myLibrary = [];
+Library = [];
 
 // Book Constructor
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(
+    title = 'Unknown',
+    author = 'Unkown',
+    pages = 0,
+    read = false,
+  ) {
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.read = read
+  }
 }
 
 // Function to add books to the library
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
-  myLibrary.push(newBook);
+  Library.push(newBook);
   updateScreen();
 }
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 801, true);
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 802, true);
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 803, true);
-addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 804, true);
 
 // Update Screen
 function updateScreen() {
@@ -28,30 +31,30 @@ function updateScreen() {
   // Title
   const bookTitle = document.createElement('p');
   bookTitle.className = 'book-title';
-  bookTitle.textContent = myLibrary[myLibrary.length -1].title;
+  bookTitle.textContent = Library[Library.length -1].title;
   bookContainer.appendChild(bookTitle)
 
   // Author
   const bookAuthor = document.createElement('p');
   bookAuthor.className = 'book-author';
-  bookAuthor.textContent = myLibrary[myLibrary.length -1].author;
+  bookAuthor.textContent = Library[Library.length -1].author;
   bookContainer.appendChild(bookAuthor);
 
   // Pages
   const bookPages = document.createElement('p');
   bookPages.className = 'book-pages';
-  bookPages.textContent = myLibrary[myLibrary.length -1].pages;
+  bookPages.textContent = Library[Library.length -1].pages;
   bookPages.textContent += " pages";
   bookContainer.appendChild(bookPages);
 
   // Read?
   const bookRead = document.createElement('button');
   bookRead.className = 'book-read';
-  bookRead.textContent = myLibrary[myLibrary.length -1].read ? "Read" : "Not Read";
+  bookRead.textContent = Library[Library.length -1].read ? "Read" : "Not Read";
   bookContainer.appendChild(bookRead);
 
   // Apply class based on read status
-  if (myLibrary[myLibrary.length - 1].read) {
+  if (Library[Library.length - 1].read) {
     bookRead.classList.add('read-book');
   }
 
@@ -125,3 +128,5 @@ form.addEventListener('submit', (event) => {
   document.getElementById('pages').value = '';
   document.getElementById('is-read').checked = false;
 })
+
+addBookToLibrary("The Name of the Wind", "Patrick Rothfuss", 662, true);
